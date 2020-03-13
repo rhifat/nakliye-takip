@@ -25,13 +25,12 @@ const cekicilerRouter = require('./routes/cekiciler');
 app.use('/giderler', giderlerRouter);
 app.use('/cekiciler', cekicilerRouter);
 
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static( 'build' ));
-
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.join(_dirname, 'public', 'build', 'index.html')); //relative path
-//     });
-// }
+if (process.env.NODE_ENV === 'production') {
+   app.use(express.static( 'build' ));
+   app.get('*', (req, res) => {
+        res.sendFile(path.join(_dirname, 'client', 'build', 'index.html')); //relative path
+     });
+ }
 
 app.listen(port, () => {
     console.log(`Server is running on port:  ${port}`);
